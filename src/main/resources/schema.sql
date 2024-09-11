@@ -1,0 +1,29 @@
+CREATE TABLE IF NOT EXISTS brands (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS price_lists (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS products (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS prices (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    brand_id BIGINT NOT NULL,
+    start_date TIMESTAMP NOT NULL,
+    end_date TIMESTAMP NOT NULL,
+    price_list BIGINT NOT NULL,
+    product_id BIGINT NOT NULL,
+    priority INTEGER NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    curr VARCHAR(3) NOT NULL,
+    FOREIGN KEY (brand_id) REFERENCES brands(id),
+    FOREIGN KEY (price_list) REFERENCES price_lists(id),
+    FOREIGN KEY (product_id) REFERENCES products(id)
+);
