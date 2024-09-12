@@ -19,7 +19,7 @@ public class GetPriceUseCase {
 
     public PriceResponseDTO execute(BigInteger productId, BigInteger brandId, LocalDateTime date) {
         List<PriceDTO> prices = priceService.getPriceByParams(productId, brandId, date);
-
+        if (prices == null || prices.size() == 0) return null;
         PriceDTO result = prices.stream().max(Comparator.comparingInt(PriceDTO::getPriority)).orElse(null);
         return new PriceResponseDTO(result);
     }

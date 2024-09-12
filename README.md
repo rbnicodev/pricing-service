@@ -16,13 +16,12 @@ This is a technical test for an interview.
 
 ## Build the Docker Image
 
-To build the Docker image for the application, run the following command in the root directory of the project (where the `Dockerfile` is located):
+To build the Docker image for the application, run the following command in the root directory of the project (where the `docker-compose.yaml` is located):
 
-##RUN
 ```bash
-docker-compose up app --build```
+docker-compose up app --build
+```
 
-##DEV
-```
-docker-compose up app-dev --build
-```
+## Documentation
+Although it is too simple a project to need documentation, it has been implemented with Swagger (OpenApi) to carry out a practical exercise with it.
+- Documentation (with the project started) : [Swagger UI - Pricin Service](http://localhost:8080/swagger-ui/index.html)
