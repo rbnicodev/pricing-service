@@ -18,7 +18,7 @@ public class PriceServiceImpl implements PriceService{
     private PriceRepository priceRepository;
 
     public List<PriceDTO> getPriceByParams(BigInteger productId, BigInteger brandId, LocalDateTime date) {
-        List<PriceEntity> prices = priceRepository.findPrices(productId, brandId, date);
+        List<PriceEntity> prices = priceRepository.findPricesByParams(productId, brandId, date);
         return prices.stream().map(price -> new PriceDTO(price)).collect(Collectors.toList());
     }
 }

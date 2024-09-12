@@ -6,9 +6,11 @@ import java.time.LocalDateTime;
 
 import dev.rbnico.pricing_service.domain.model.PriceEntity;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+@Builder
 @AllArgsConstructor
 @Setter
 @Getter

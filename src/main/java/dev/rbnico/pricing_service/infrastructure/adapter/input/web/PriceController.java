@@ -25,6 +25,7 @@ public class PriceController {
                                             @RequestParam BigInteger brandId,
                                             @RequestParam("date") String dateStr) {
         LocalDateTime date = LocalDateTime.parse(dateStr);
-        return getPriceUseCase.execute(productId, brandId, date);
+        PriceResponseDTO result = getPriceUseCase.execute(productId, brandId, date);
+        return result;
     }
 }
