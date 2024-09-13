@@ -46,9 +46,9 @@ jobs:
       - name: Build and push Docker image with docker-compose
         id: build-and-push
         run: |
-          docker-compose -f docker-compose.yaml build app
+          docker-compose -f docker-compose.yml build app
           if [ "${{ github.event_name }}" != 'pull_request' ]; then
-            docker-compose -f docker-compose.yaml push app
+            docker-compose -f docker-compose.yml push app
           fi
       
       - name: Extract Docker metadata
