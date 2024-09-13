@@ -1,24 +1,19 @@
 openapi: 3.0.3
 info:
-  title: Pricing Service 0.0.1
+  title: Pricing Service
   description: |-
     This is a simple project to implement the development of an APIRest with Java 17 and Spring developed with hexagonal architecture. 
-    As an example, this simple documentation has been created with the only existing endpoint. [This will be updated if features are added later].
+    As an example, this simple documentation has been created with the only existing endpoint.
+    [The documentation will be updated if features are added later].
   termsOfService: http://swagger.io/terms/
   contact:
     email: rubenmsanchis.dev@gmail.com
-  license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
-  version: 1.0.11
+  version: 0.0.1 - SNAPSHOT
 externalDocs:
   description: Pricing Service Repository
   url: https://github.com/rbnicodev/pricing-service
 servers:
-  - url: localhost:8080/api/prices
-tags:
-  - name: Prices
-    description: Manage prices
+  - url: api/
 paths:
   /prices:
     get:
@@ -34,18 +29,20 @@ paths:
           required: true
           explode: true
           schema:
-            type: string
+            type: integer
+            format: int64
         - name: brandId
           in: query
           description: Brand identifier for which you want to check the price
           required: true
           explode: true
           schema:
-            type: string
+            type: integer
+            format: int64
         - name: date
           in: query
           description: Date for which you want to consult the price. If null, the date and time of execution will be assumed
-          required: false
+          required: true
           explode: true
           schema:
             type: string
@@ -57,14 +54,14 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Price'
+                  $ref: '#/components/schemas/PriceResponse'
         '400':
           description: Invalid status value
 
 
 components:
   schemas:
-    Price:
+    PriceResponse:
       type: object
       properties:
         productId:

@@ -1,6 +1,7 @@
 package dev.rbnico.pricing_service.infrastructure.adapter.input.web;
 
 import java.math.BigInteger;
+import java.security.InvalidParameterException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 import java.util.List;
@@ -34,8 +35,9 @@ public class PriceController {
             if (result == null) return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
             return ResponseEntity.status(HttpStatus.OK).body(result);
         } catch (DateTimeParseException dateException) {
-            //TODO: Create custom exceptions to correctly report errors to the user
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+            throw new InvalidParameterException("The provided parameter 'date' is not valid");
         }
     }
+
+
 }
